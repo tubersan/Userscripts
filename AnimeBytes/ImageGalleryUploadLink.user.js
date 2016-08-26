@@ -3,10 +3,9 @@
 // @namespace   mukti.moe
 // @author      mukti
 // @description Add link to go back to previous upload page, or main upload page.
-// @include     *animebytes.tv/forums.php*
-// @include     *animebyt.es/forums.php*
+// @include     *animebytes.tv/user.php?action=mei_uploads*
 // @version     1
-// @icon http://animebytes.tv/favicon.ico
+// @icon 		http://animebytes.tv/favicon.ico
 // ==/UserScript==
 
 iure = /^.*imageupload.php.*$/
