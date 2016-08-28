@@ -5,7 +5,7 @@
 // @description Automatically add "&showdeleted=1" to all forum post URLs
 // @include     *animebytes.tv/forums.php*
 // @include     *animebyt.es/forums.php*
-// @version     1.2
+// @version     1.2.1
 // @run-at      document-start
 // @grant       none
 // @icon        http://animebytes.tv/favicon.ico
@@ -25,7 +25,7 @@ if (url.match(tire) && url.match(frre) && !(url.match(dmre))){
 // ... and replace all links, after page load!
 document.addEventListener("DOMContentLoaded", function () {
    // Add '&showdeleted=1' to all forum thread links on the current page
-   var threadregex = /forums\.php\?([^&]+&)*action=viewthread/
+   var threadregex = /forums\.php\?([^&]+&)*action=viewthread/;
    var links = document.getElementsByTagName('a');
    for (var i = 0, link; (link = links[i]); i++) {
       if (threadregex.exec(link.getAttribute('href'))) {
