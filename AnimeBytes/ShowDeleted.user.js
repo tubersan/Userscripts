@@ -12,10 +12,10 @@
 // ==/UserScript==
 
 // Detect non-showdeleted URL before page load...
-var tire = /^.*&threadid=.*$/
-var frre = /^.*forums.php.*$/
-var dmre = /^.*&showdeleted.*/
-var url = window.location.href;    
+var tire = /^.*&threadid=.*$/;
+var frre = /^.*forums.php.*$/;
+var dmre = /^.*&showdeleted.*/;
+var url = window.location.href;
 if (url.match(tire) && url.match(frre) && !(url.match(dmre))){
    url += '&showdeleted=1';
    console.log(url);
@@ -23,7 +23,7 @@ if (url.match(tire) && url.match(frre) && !(url.match(dmre))){
 }
 
 // ... and replace all links, after page load!
-document.addEventListener("DOMContentLoaded", function ()) {
+document.addEventListener("DOMContentLoaded", function () {
    // Add '&showdeleted=1' to all forum thread links on the current page
    var threadregex = /forums\.php\?([^&]+&)*action=viewthread/
    var links = document.getElementsByTagName('a');
@@ -32,4 +32,4 @@ document.addEventListener("DOMContentLoaded", function ()) {
          link.setAttribute('href', link.getAttribute('href') + '&showdeleted=1');
       }
    }
-}
+});
