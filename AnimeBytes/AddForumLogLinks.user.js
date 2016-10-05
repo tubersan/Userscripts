@@ -5,7 +5,7 @@
 // @description Add links to threads and posts from the forum log page.
 // @include     *animebytes.tv/log.php?type=forum*
 // @include     *animebyt.es/log.php?type=forum*
-// @version     1.1
+// @version     1.2
 // @icon        http://animebytes.tv/favicon.ico
 // ==/UserScript==
 
