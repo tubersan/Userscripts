@@ -18,9 +18,9 @@ for (var i = 0, row; row = forumlog.rows[i]; i++) {
 
 	for (var j = 0, cell; cell = row.cells[j]; j++) {
 
-		if(cell.innerText.match(tpre)) {
+		if(cell.innerHTML.match(tpre)) {
 			
-			var matches = tpre.exec(cell.innerText);
+			var matches = tpre.exec(cell.innerHTML);
 			
 			if(matches[1].match(/Thread/)) {
 				
