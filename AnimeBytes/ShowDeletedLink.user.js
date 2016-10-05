@@ -5,12 +5,12 @@
 // @description Add a button to append "&showdeleted=1" to all forum post URLs
 // @include     *animebytes.tv/forums.php*&threadid=*
 // @include     *animebyt.es/forums.php*&threadid=*
-// @version     1.1
+// @version     1.2
 // @icon        http://animebytes.tv/favicon.ico
 // ==/UserScript==
 
 var lnk = document.createElement('a');
-var cururl = window.location.href
+var cururl = window.location.href;
 ptre = /(.*)(#post\d+)/;
 var matches = ptre.exec(cururl);
 lnk.href = matches[1] + '&showdeleted=1' + matches[2];
