@@ -5,7 +5,7 @@
 // @description Add links to threads and posts from the forum log page.
 // @include     *animebytes.tv/log.php?type=forum*
 // @include     *animebyt.es/log.php?type=forum*
-// @version     1
+// @version     1.1
 // @icon        http://animebytes.tv/favicon.ico
 // ==/UserScript==
 
@@ -25,7 +25,7 @@ for (var i = 0, row; row = forumlog.rows[i]; i++) {
 			if(matches[1].match(/Thread/)) {
 				
 				var strreplace = matches[1] + " #" + matches[2];
-				cell.innerHTML = cell.innerText.replace(strreplace, "<a href='https://animebytes.tv/forums.php?action=viewthread&threadid=" + matches[2] + "'>" + strreplace + "</a>");
+				cell.innerHTML = cell.innerHTML.replace(strreplace, "<a href='https://animebytes.tv/forums.php?action=viewthread&threadid=" + matches[2] + "'>" + strreplace + "</a>");
 				
 			}
 			
@@ -39,7 +39,7 @@ for (var i = 0, row; row = forumlog.rows[i]; i++) {
 				//}
 				
 				var strreplace = "Thread " + matches[4];
-				cell.innerHTML = cell.innerText.replace(strreplace, "<a href='https://animebytes.tv/forums.php?action=viewthread&threadid=" + matches[4] + "'>" + strreplace + "</a>");
+				cell.innerHTML = cell.innerHTML.replace(strreplace, "<a href='https://animebytes.tv/forums.php?action=viewthread&threadid=" + matches[4] + "'>" + strreplace + "</a>");
 				var test = cell;
 				
 			}
