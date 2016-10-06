@@ -5,11 +5,12 @@
 // @description Add links to threads and posts from the forum log page.
 // @include     *animebytes.tv/log.php?type=forum*
 // @include     *animebyt.es/log.php?type=forum*
-// @version     2.0
+// @version     2.1
 // @icon        http://animebytes.tv/favicon.ico
 // ==/UserScript==
 
-function loadPost(postID) {
+// Function to load new page with ajax callback
+function loadPost() {
 	$.ajax({
 		type: "GET",
 		url: "https://animebytes.tv/ajax.php" ,
@@ -17,7 +18,7 @@ function loadPost(postID) {
 		data: {
 			action: "forums" ,
 			type: "d_postid" ,
-			pID: postID ,
+			pID: this.innerHTML ,
 		},
 		success: function(data) {
 			var fixedPostLink = data.replace(/\&amp\;/g, "&").replace(/["]/g, "");
@@ -26,10 +27,12 @@ function loadPost(postID) {
 	});
 }
 
+// Define variables
 var fltables = document.getElementsByTagName('table');
 var forumlog = fltables[fltables.length - 1];
 var tpre = /.*(Thread|Post|Posts)\s#([\d,]+)\s(\(Thread\s(\d+)\))?.*/;
 
+// Loop through rows linking threads, and adding function anchors to posts
 for (var i = 0, row; row = forumlog.rows[i]; i++) {
 
 	for (var j = 0, cell; cell = row.cells[j]; j++) {
@@ -38,6 +41,7 @@ for (var i = 0, row; row = forumlog.rows[i]; i++) {
 			
 			var matches = tpre.exec(cell.innerHTML);
 			
+			// Link threads
 			if(matches[1].match(/Thread/)) {
 				
 				var strreplace = matches[2];
@@ -45,6 +49,7 @@ for (var i = 0, row; row = forumlog.rows[i]; i++) {
 				
 			}
 			
+			// Add functions to posts
 			if(matches[1].match(/Post/)) {
 				
 				if(matches[1] == 'Posts') {
@@ -53,14 +58,14 @@ for (var i = 0, row; row = forumlog.rows[i]; i++) {
 					
 					for (var k = 0, post; post = posts[k]; k++) {
 						
-						cell.innerHTML = cell.innerHTML.replace(post, '<a href="javascript:void(0);" onclick="loadPost(' + post + ');">' + post + '</a>');
+						cell.innerHTML = cell.innerHTML.replace(post, '<a href="javascript:void(0);" class="ABLoadPostUserscript">' + post + '</a>');
 
 					}
 					
 				} else {
 					
 					post = matches[2]
-					cell.innerHTML = cell.innerHTML.replace(post, '<a href="javascript:void(0);" onclick="loadPost(' + post + ');">' + post + '</a>');
+					cell.innerHTML = cell.innerHTML.replace(post, '<a href="javascript:void(0);" class="ABLoadPostUserscript">' + post + '</a>');
 					
 				}
 				
@@ -74,3 +79,5 @@ for (var i = 0, row; row = forumlog.rows[i]; i++) {
 	}
 
 }
+
+$(".ABLoadPostUserscript").click(loadPost);
