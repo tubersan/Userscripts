@@ -3,9 +3,11 @@
 // @namespace   mukti.moe
 // @author      mukti
 // @description Add links to threads and posts from the forum log page.
-// @include     *animebytes.tv/log.php?type=forum*
-// @include     *animebyt.es/log.php?type=forum*
-// @version     2.1
+// @include     *://animebytes.tv/log.php?type=forum*  
+// @match       *://animebytes.tv/log.php?type=forum*  
+// @version     2.2
+// @downloadURL https://github.com/3ricG/Userscripts/raw/master/AnimeBytes/AddForumLogLinks.user.js
+// @updateURL   https://github.com/3ricG/Userscripts/raw/master/AnimeBytes/AddForumLogLinks.user.js
 // @icon        http://animebytes.tv/favicon.ico
 // ==/UserScript==
 
