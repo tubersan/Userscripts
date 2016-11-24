@@ -5,7 +5,7 @@
 // @description Add links to threads and posts from the forum log page.
 // @include     *://animebytes.tv/log.php*
 // @match       *://animebytes.tv/log.php*
-// @version     2.3
+// @version     2.3.1
 // @downloadURL https://github.com/3ricG/Userscripts/raw/master/AnimeBytes/AddForumLogLinks.user.js
 // @updateURL   https://github.com/3ricG/Userscripts/raw/master/AnimeBytes/AddForumLogLinks.user.js
 // @icon        http://animebytes.tv/favicon.ico
@@ -14,7 +14,6 @@
 // Function to load new page with ajax callback
 function loadPost(e) {
 	if (e.button === 0 || e.button === 1) {
-		e.preventDefault();
 		var xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
@@ -67,4 +66,5 @@ for (var i = 0, row; row = forumlog.rows[i]; i++)
 var list = document.getElementsByClassName("ABLoadPostUserscript");
 for (var i = 0; i < list.length; i++) {
 	list[i].addEventListener("mouseup", loadPost);
+	list[i].addEventListener("click", function (e) { e.preventDefault(); });
 }
